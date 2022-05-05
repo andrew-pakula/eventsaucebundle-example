@@ -1,10 +1,10 @@
-product_api:
-    resource: ../src/Product/Api/
+foo_api:
+    resource: ../src/Foo/Api/
     type: annotation
     prefix: api
 
-cart_api:
-    resource: ../src/Cart/Api/
+bar_api:
+    resource: ../src/Bar/Api/
     type: annotation
     prefix: api
 

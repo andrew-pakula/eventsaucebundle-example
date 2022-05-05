@@ -23,6 +23,6 @@ framework:
             eventBus:
                 default_middleware: allow_no_handlers
         routing:
-            App\Shared\Application\MessageMarker\HighPriorityAsyncMessageInterface: high_priority
-            App\Shared\Application\MessageMarker\NormalPriorityAsyncMessageInterface: normal_priority
+            App\Shared\Application\MessageMarker\HighPriorityMessageInterface: high_priority
+            App\Shared\Application\MessageMarker\NormalPriorityMessageInterface: normal_priority
             App\Shared\Application\MessageMarker\MessageInterface: sync

@@ -10,11 +10,11 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
-            product_catalog:
+            foo_projection:
                 type: attribute
-                dir: '%kernel.project_dir%/src/Product/Application/Projection/Entity'
+                dir: '%kernel.project_dir%/src/Foo/Application/Projection/Entity'
                 is_bundle: false
-                prefix: App\Product\Application\Projection\Entity
+                prefix: App\Foo\Application\Projection\Entity
 
 when@test:
     doctrine:
