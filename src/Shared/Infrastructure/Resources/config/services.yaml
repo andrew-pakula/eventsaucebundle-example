@@ -1,0 +1,8 @@
+services:
+    _defaults:
+        public: false
+        autoconfigure: true
+        autowire: true
+
+    App\Shared\Application\:
+        resource: '../../../Application/*'

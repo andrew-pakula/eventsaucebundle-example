@@ -1,0 +1,33 @@
+andreo_event_sauce:
+    time:
+        timezone: Europe/Warsaw
+    messenger_message_dispatcher:
+        chain:
+            defaultBus:
+                bus: eventBus
+                acl: true
+    event_dispatcher:
+        outbox: true
+    acl: true
+    outbox:
+        logger: monolog.logger.message_outbox
+    snapshot:
+        versioned: true
+        store_strategy:
+            every_n_event:
+                number: 10
+        repository:
+            doctrine: true
+    upcaster:
+        argument: message
+    migration_generator: true
+    aggregates:
+        foo:
+            class: App\Foo\Domain\Foo
+            outbox: true
+            upcaster: true
+        bar:
+            class: App\Bar\Domain\Bar
+            snapshot: true
+            outbox: true
+            upcaster: true

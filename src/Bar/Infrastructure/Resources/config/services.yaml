@@ -1,0 +1,12 @@
+services:
+    _defaults:
+        public: false
+        autoconfigure: true
+        autowire: true
+
+    App\Bar\Application\:
+        resource: '../../../Application/*'
+
+    App\Bar\Api\:
+        resource: '../../../Api/*'
+        tags: [controller.service_arguments]

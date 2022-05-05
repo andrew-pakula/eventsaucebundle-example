@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+    php:
+        build: &php-build
+            context: .
+            dockerfile: docker/php/Dockerfile
+            target: php-dev
+            args:
+                TIMEZONE: ${TIMEZONE}
+        container_name: eventsauce_php
+        restart: unless-stopped
+        environment:
+            PHP_IDE_CONFIG: "serverName=eventsauce"
+        volumes: &volumes
+            - .:/usr/share/nginx/html:rw,cached
+        networks:
+            - eventsauce
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+
+    messenger:
+        build: *php-build
+        container_name: eventsauce_messenger
+        command: ["./bin/console", "messenger:consume", "high_priority", "normal_priority", "--time-limit=3600"]
+        restart: unless-stopped
+        depends_on:
+            - php
+        volumes: *volumes
+        networks:
+            - eventsauce
+
+    outbox:
+        build: *php-build
+        container_name: eventsauce_outbox
+        command: ["./bin/console", "andreo:event-sauce:outbox-process-messages", "--sleep=2"]
+        restart: unless-stopped
+        volumes: *volumes
+        depends_on:
+            - php
+        networks:
+            - eventsauce
+
+    nginx:
+        build:
+            context: .
+            dockerfile: docker/nginx/Dockerfile
+            target: nginx-dev
+        container_name: eventsauce_nginx
+        volumes: *volumes
+        depends_on:
+            - php
+        ports:
+            - ${HTTP_PORT}:80
+        networks:
+            - eventsauce
+
+    db:
+        image: mysql:8.0
+        container_name: eventsauce_db
+        environment:
+            - MYSQL_DATABASE=${DB_NAME}
+            - MYSQL_PASSWORD=${DB_PASSWORD}
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+        ports:
+            - ${DB_PORT}:3306
+        networks:
+            - eventsauce
+
+    rabbit:
+        build:
+            context: .
+            dockerfile: docker/rabbit/Dockerfile
+        container_name: eventsauce_rabbit
+        environment:
+            - RABBITMQ_DEFAULT_USER=${RABBIT_USER}
+            - RABBITMQ_DEFAULT_PASS=${RABBIT_PSWD}
+        ports:
+            - "15672:15672"
+            - ${RABBIT_PORT}:5672
+        networks:
+            - eventsauce
+networks:
+    eventsauce:

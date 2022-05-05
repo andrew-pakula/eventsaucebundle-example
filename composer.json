@@ -1,0 +1,90 @@
+{
+    "type": "project",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.1",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "andreo/eventsauce-aggregate": "^1.0",
+        "andreo/eventsauce-bundle": "dev-main",
+        "andreo/eventsauce-messenger": "dev-main",
+        "andreo/eventsauce-migration-generator": "dev-main",
+        "andreo/eventsauce-outbox": "dev-main",
+        "andreo/eventsauce-snapshotting": "dev-main",
+        "andreo/eventsauce-upcasting": "dev-main",
+        "doctrine/doctrine-bundle": "^2.5",
+        "doctrine/doctrine-migrations-bundle": "^3.2",
+        "doctrine/migrations": "^3.4",
+        "doctrine/orm": "^2.11",
+        "ramsey/uuid-doctrine": "^1.8",
+        "symfony/amqp-messenger": "^6.1",
+        "symfony/console": "^6.1",
+        "symfony/dotenv": "^6.1",
+        "symfony/flex": "^2",
+        "symfony/framework-bundle": "^6.1",
+        "symfony/messenger": "^6.1",
+        "symfony/monolog-bundle": "^3.7",
+        "symfony/proxy-manager-bridge": "^6.1",
+        "symfony/runtime": "^6.1",
+        "symfony/yaml": "^6.1",
+        "zumba/json-serializer": "^3.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "symfony/flex": true,
+            "symfony/runtime": true
+        },
+        "optimize-autoloader": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "replace": {
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php80": "*"
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        },
+        "post-install-cmd": [
+            "HarmBandstra\\SwaggerUiBundle\\Composer\\ScriptHandler::linkAssets",
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "HarmBandstra\\SwaggerUiBundle\\Composer\\ScriptHandler::linkAssets",
+            "@auto-scripts"
+        ]
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "require": "^6.1"
+        }
+    },
+    "require-dev": {
+        "harmbandstra/swagger-ui-bundle": "^5.0"
+    }
+}

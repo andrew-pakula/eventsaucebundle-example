@@ -1,0 +1,100 @@
+openapi: 3.0.1
+info:
+  title: EventSauce demo
+  version: 1.0.0
+servers:
+  - url: http://localhost:8888/api
+tags:
+  - name: foo
+  - name: bar
+paths:
+  /foo/create:
+    post:
+      tags:
+        - foo
+      operationId: fooCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateFoo'
+        required: true
+      responses:
+        '201':
+          description: Created
+        '500':
+          description: Error
+
+  /foo/change:
+    patch:
+      tags:
+        - foo
+      operationId: fooChange
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeFoo'
+        required: true
+      responses:
+        '204':
+          description: Created
+        '500':
+          description: Error
+
+  /bar/create:
+    post:
+      tags:
+        - bar
+      operationId: barCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBar'
+      responses:
+        '201':
+          description: Created
+        '500':
+          description: Error
+
+  /bar/change:
+    patch:
+      tags:
+        - bar
+      operationId: barChange
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeBar'
+        required: true
+      responses:
+        '204':
+          description: Created
+        '500':
+          description: Error
+
+components:
+  schemas:
+    CreateFoo:
+      type: object
+      properties: {}
+
+    ChangeFoo:
+      type: object
+      properties:
+        id:
+          type: string
+          default: d1041a14-2198-408f-9885-2c68d0e71f92
+
+    CreateBar:
+      type: object
+      properties: {}
+
+    ChangeBar:
+      type: object
+      properties:
+        id:
+          type: string
+          default: d1041a14-2198-408f-9885-2c68d0e71f92

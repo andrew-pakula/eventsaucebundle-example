@@ -1,0 +1,10 @@
+imports:
+    - { resource: ../src/Foo/Infrastructure/Resources/config/services.yaml }
+    - { resource: ../src/Bar/Infrastructure/Resources/config/services.yaml }
+    - { resource: ../src/Shared/Infrastructure/Resources/config/services.yaml }
+
+services:
+    _defaults:
+        public: false
+        autoconfigure: true
+        autowire: true

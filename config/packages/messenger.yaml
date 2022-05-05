@@ -1,0 +1,28 @@
+framework:
+    messenger:
+        transports:
+            sync: 'sync://'
+            high_priority:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+                options:
+                    exchange:
+                        name: high
+                    queues:
+                        high_priority: ~
+            normal_priority:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+                options:
+                    exchange:
+                        name: normal
+                    queues:
+                        normal_priority: ~
+        default_bus: commandBus
+        buses:
+            commandBus: ~
+            queryBus: ~
+            eventBus:
+                default_middleware: allow_no_handlers
+        routing:
+            App\Shared\Application\MessageMarker\HighPriorityAsyncMessageInterface: high_priority
+            App\Shared\Application\MessageMarker\NormalPriorityAsyncMessageInterface: normal_priority
+            App\Shared\Application\MessageMarker\MessageInterface: sync
