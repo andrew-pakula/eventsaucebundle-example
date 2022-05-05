@@ -11,7 +11,7 @@ interface FooProjectionRepositoryInterface
 {
     public function getForFoo(UuidInterface $uuid): FooProjection;
 
-    public function add(FooProjection $productCatalog): void;
+    public function add(FooProjection $fooProjection): void;
 
     public function update(): void;
 }

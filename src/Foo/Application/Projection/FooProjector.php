@@ -28,7 +28,7 @@ final class FooProjector implements MessageConsumer, MessageSubscriberInterface
             $this->onCreated($event, $message->headers());
         }
         if ($event instanceof FooChanged) {
-            $this->onRenamed($event);
+            $this->onChanged($event);
         }
     }
 
@@ -42,18 +42,15 @@ final class FooProjector implements MessageConsumer, MessageSubscriberInterface
 
         $productCatalog = FooProjection::create(
             Uuid::fromString($event->getId()->toString()),
-            $event->getName()->getName(),
-            $event->getCode()->getCode(),
             json_encode($headers, JSON_THROW_ON_ERROR)
         );
 
         $this->productCatalogRepository->add($productCatalog);
     }
 
-    private function onRenamed(FooChanged $event): void
+    private function onChanged(FooChanged $event): void
     {
-        $productCatalog = $this->productCatalogRepository->getForProduct(Uuid::fromString($event->getId()->toString()));
-        $productCatalog->rename($event->getNewName()->getName());
+        $fooProjection = $this->productCatalogRepository->getForFoo(Uuid::fromString($event->getId()->toString()));
         $this->productCatalogRepository->update();
     }
 

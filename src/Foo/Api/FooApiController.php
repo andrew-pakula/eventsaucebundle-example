@@ -7,9 +7,6 @@ namespace App\Foo\Api;
 use App\Foo\Domain\Command\ChangeFoo;
 use App\Foo\Domain\Command\CreateFoo;
 use App\Foo\Domain\FooId;
-use App\Foo\Domain\ProductCode;
-use App\Foo\Domain\ProductName;
-use App\Foo\Domain\ProductPrice;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,9 +25,6 @@ final class FooApiController
             $productId = FooId::create();
             $command = new CreateFoo(
                 $productId,
-                new ProductCode($data['code']),
-                new ProductName($data['name']),
-                ProductPrice::fromInt($data['price'])
             );
             $commandBus->dispatch($command);
         } catch (Throwable $exception) {
@@ -47,7 +41,6 @@ final class FooApiController
             $data = $request->toArray();
             $command = new ChangeFoo(
                 FooId::fromString($data['id']),
-                new ProductName($data['name']),
             );
             $commandBus->dispatch($command);
         } catch (Throwable $exception) {
