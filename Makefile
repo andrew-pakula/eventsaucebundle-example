@@ -38,6 +38,9 @@ install: ## Run composer install
 migrate: ## Run doctrine migrate
 	@$(DOCKER_COMPOSE) exec php ./bin/console d:m:m --no-interaction
 
+migration-generate: ## Run doctrine migrate generate
+	@$(DOCKER_COMPOSE) exec php ./bin/console d:m:g
+
 messenger-stop: ## Messenger stop
 	@$(DOCKER_COMPOSE) stop messenger
 
