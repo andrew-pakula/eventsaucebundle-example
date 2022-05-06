@@ -21,6 +21,9 @@ class FooProjection
     #[Column(type: 'text')]
     private string $headers;
 
+    #[Column(type: 'string', nullable: true)]
+    private ?string $value = null;
+
     private function __construct(UuidInterface $id)
     {
         $this->id = $id;
@@ -35,9 +38,19 @@ class FooProjection
         return $productCatalog;
     }
 
+    public function change(string $value): void
+    {
+        $this->value = $value;
+    }
+
     public function getId(): UuidInterface
     {
         return $this->id;
+    }
+
+    public function getValue(): ?string
+    {
+        return $this->value;
     }
 
     public function getHeaders(): string

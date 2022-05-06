@@ -15,6 +15,6 @@ final class BarInboundMessageTranslator implements MessageTranslator
 {
     public function translateMessage(Message $message): Message
     {
-        return $message->withHeader('__bar_inbound_header', 'bar');
+        return $message->withHeader('__bar_inbound_header', bin2hex(random_bytes(10)));
     }
 }

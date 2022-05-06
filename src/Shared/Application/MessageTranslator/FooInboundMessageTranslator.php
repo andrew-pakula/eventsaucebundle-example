@@ -15,6 +15,6 @@ final class FooInboundMessageTranslator implements MessageTranslator
 {
     public function translateMessage(Message $message): Message
     {
-        return $message->withHeader('__foo_inbound_header', 'foo');
+        return $message->withHeader('__foo_inbound_header', bin2hex(random_bytes(10)));
     }
 }

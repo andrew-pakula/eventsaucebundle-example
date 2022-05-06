@@ -11,12 +11,8 @@ use EventSauce\EventSourcing\MessageDecorator;
 #[AsMessageDecorator]
 final class FooMessageDecorator implements MessageDecorator
 {
-    public function __construct()
-    {
-    }
-
     public function decorate(Message $message): Message
     {
-        return $message->withHeader('__foo', mt_rand());
+        return $message->withHeader('__foo_decorator', bin2hex(random_bytes(10)));
     }
 }

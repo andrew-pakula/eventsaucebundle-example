@@ -41,16 +41,12 @@ migrate: ## Run doctrine migrate
 migration-generate: ## Run doctrine migrate generate
 	@$(DOCKER_COMPOSE) exec php ./bin/console d:m:g
 
-messenger-stop: ## Messenger stop
+cqrs-stop: ## Messenger and outbox stop
 	@$(DOCKER_COMPOSE) stop messenger
-
-outbox-stop: ## Outbox stop
 	@$(DOCKER_COMPOSE) stop outbox
 
-messenger-restart: ## Messenger restart
+cqrs-restart: ## Messenger and outbox restart
 	@$(DOCKER_COMPOSE) restart messenger
-
-outbox-restart: ## Outbox restart
 	@$(DOCKER_COMPOSE) restart outbox
 
 messenger-consume: ## Messenger consume

@@ -11,12 +11,8 @@ use EventSauce\EventSourcing\MessageDecorator;
 #[AsMessageDecorator]
 final class BarMessageDecorator implements MessageDecorator
 {
-    public function __construct()
-    {
-    }
-
     public function decorate(Message $message): Message
     {
-        return $message->withHeader('__bar', uniqid('bar', true));
+        return $message->withHeader('__bar_decorator', bin2hex(random_bytes(10)));
     }
 }

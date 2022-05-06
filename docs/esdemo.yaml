@@ -42,6 +42,23 @@ paths:
         '500':
           description: Error
 
+  /foo/get/{id}:
+    get:
+      tags:
+        - foo
+      operationId: fooGet
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Created
+        '500':
+          description: Error
+
   /bar/create:
     post:
       tags:
