@@ -8,7 +8,7 @@ use Andreo\EventSauce\Aggregate\AggregateRootBehaviourWithAppliesByAttribute;
 use Andreo\EventSauce\Aggregate\EventSourcingHandler;
 use App\Foo\Domain\Command\ChangeFoo;
 use App\Foo\Domain\Command\CreateFoo;
-use App\Foo\Domain\Event\FooChanged;
+use App\Foo\Domain\Event\FooChangedV2 as FooChanged;
 use App\Foo\Domain\Event\FooCreated;
 use DateTimeImmutable;
 use EventSauce\Clock\Clock;
@@ -45,6 +45,7 @@ final class Foo implements AggregateRoot
         $this->recordThat(new FooChanged(
             $command->getId(),
             $clock->now(),
+            bin2hex(random_bytes(10)),
             bin2hex(random_bytes(20))
         ));
     }

@@ -27,5 +27,6 @@ final class ChangeBarHandler
         $bar->change($command, $this->clock);
 
         $this->repository->persist($bar);
+        $this->repository->storeSnapshot($bar);
     }
 }

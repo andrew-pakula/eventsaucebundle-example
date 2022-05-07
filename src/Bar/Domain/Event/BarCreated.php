@@ -6,12 +6,15 @@ namespace App\Bar\Domain\Event;
 
 use App\Bar\Domain\BarId;
 use App\Shared\Application\MessageMarker\MessageInterface;
+use DateTimeImmutable;
 use EventSauce\EventSourcing\Serialization\SerializablePayload;
 
 final class BarCreated implements MessageInterface, SerializablePayload
 {
-    public function __construct(private readonly BarId $id)
-    {
+    public function __construct(
+        private readonly BarId $id,
+        private readonly DateTimeImmutable $updatedAt
+    ) {
     }
 
     public function getId(): BarId
@@ -19,10 +22,16 @@ final class BarCreated implements MessageInterface, SerializablePayload
         return $this->id;
     }
 
+    public function getUpdatedAt(): DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
     public function toPayload(): array
     {
         return [
             'id' => $this->id->toString(),
+            'updatedAt' => $this->updatedAt->format('Y-m-d H:i:s'),
         ];
     }
 
@@ -30,6 +39,7 @@ final class BarCreated implements MessageInterface, SerializablePayload
     {
         return new self(
             BarId::fromString($payload['id']),
+            DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $payload['updatedAt'])
         );
     }
 }

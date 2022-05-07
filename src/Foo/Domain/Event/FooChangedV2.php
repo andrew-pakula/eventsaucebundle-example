@@ -2,23 +2,24 @@
 
 declare(strict_types=1);
 
-namespace App\Bar\Domain\Event;
+namespace App\Foo\Domain\Event;
 
-use App\Bar\Domain\BarId;
+use App\Foo\Domain\FooId;
 use App\Shared\Application\MessageMarker\MessageInterface;
 use DateTimeImmutable;
 use EventSauce\EventSourcing\Serialization\SerializablePayload;
 
-final class BarChanged implements MessageInterface, SerializablePayload
+final class FooChangedV2 implements MessageInterface, SerializablePayload
 {
     public function __construct(
-        private readonly BarId $id,
+        private readonly FooId $id,
         private readonly DateTimeImmutable $updatedAt,
-        private string $value
+        private string $value,
+        private string $upcaster
     ) {
     }
 
-    public function getId(): BarId
+    public function getId(): FooId
     {
         return $this->id;
     }
@@ -33,21 +34,28 @@ final class BarChanged implements MessageInterface, SerializablePayload
         return $this->value;
     }
 
+    public function getUpcaster(): string
+    {
+        return $this->upcaster;
+    }
+
     public function toPayload(): array
     {
         return [
             'id' => $this->id->toString(),
             'updatedAt' => $this->updatedAt->format('Y-m-d H:i:s'),
             'value' => $this->value,
+            'upcaster' => $this->upcaster,
         ];
     }
 
     public static function fromPayload(array $payload): static
     {
         return new self(
-            BarId::fromString($payload['id']),
+            FooId::fromString($payload['id']),
             DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $payload['updatedAt']),
-            $payload['value']
+            $payload['value'],
+            $payload['upcaster']
         );
     }
 }

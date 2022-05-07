@@ -13,6 +13,7 @@ use App\Bar\Domain\Command\CreateBar;
 use App\Bar\Domain\Event\BarChanged;
 use App\Bar\Domain\Event\BarCreated;
 use App\Bar\Domain\Snapshot\BarSnapshot;
+use DateTimeImmutable;
 use EventSauce\Clock\Clock;
 use EventSauce\EventSourcing\AggregateRootId;
 use EventSauce\EventSourcing\Snapshotting\AggregateRootWithSnapshotting;
@@ -22,10 +23,17 @@ final class Bar implements AggregateRootWithVersionedSnapshotting
     use AggregateRootBehaviourWithAppliesByAttribute;
     use VersionedSnapshottingBehaviour;
 
+    private DateTimeImmutable $updatedAt;
+
+    private string $value;
+
     public static function create(CreateBar $command, Clock $clock): self
     {
         $bar = new static($command->getId());
-        $bar->recordThat(new BarCreated($command->getId()));
+        $bar->recordThat(new BarCreated(
+            $command->getId(),
+            $clock->now()
+        ));
 
         return $bar;
     }
@@ -33,16 +41,23 @@ final class Bar implements AggregateRootWithVersionedSnapshotting
     #[EventSourcingHandler]
     public function onCreated(BarCreated $event): void
     {
+        $this->updatedAt = $event->getUpdatedAt();
     }
 
     public function change(ChangeBar $command, Clock $clock): void
     {
-        $this->recordThat(new BarChanged($command->getId()));
+        $this->recordThat(new BarChanged(
+            $command->getId(),
+            $clock->now(),
+            bin2hex(random_bytes(10)),
+        ));
     }
 
     #[EventSourcingHandler]
     public function onChanged(BarChanged $event): void
     {
+        $this->updatedAt = $event->getUpdatedAt();
+        $this->value = $event->getValue();
     }
 
     public static function getSnapshotVersion(): int|string
@@ -52,7 +67,7 @@ final class Bar implements AggregateRootWithVersionedSnapshotting
 
     protected function createSnapshotState(): BarSnapshot
     {
-        return new BarSnapshot();
+        return new BarSnapshot($this->value, $this->updatedAt);
     }
 
     protected static function reconstituteFromSnapshotState(AggregateRootId $id, $state): AggregateRootWithSnapshotting
