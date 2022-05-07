@@ -23,7 +23,7 @@ final class ChangeBarHandler
     public function __invoke(ChangeBar $command): void
     {
         /** @var Bar $bar */
-        $bar = $this->repository->retrieve($command->getId());
+        $bar = $this->repository->retrieveFromSnapshot($command->getId());
         $bar->change($command, $this->clock);
 
         $this->repository->persist($bar);
