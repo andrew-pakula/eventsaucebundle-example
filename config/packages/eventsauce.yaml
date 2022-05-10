@@ -21,6 +21,8 @@ andreo_event_sauce:
     upcaster:
         argument: message
     migration_generator: true
+    serializer:
+        message: EventSauce\EventSourcing\Serialization\MySQL8DateFormatting
     aggregates:
         foo:
             class: App\Foo\Domain\Foo
@@ -29,5 +31,9 @@ andreo_event_sauce:
         bar:
             class: App\Bar\Domain\Bar
             snapshot: true
+            outbox: true
+            upcaster: true
+        baz:
+            class: App\Baz\Domain\Baz
             outbox: true
             upcaster: true

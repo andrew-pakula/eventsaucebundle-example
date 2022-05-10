@@ -1,7 +1,8 @@
 imports:
+    - { resource: ../src/Shared/Infrastructure/Resources/config/services.yaml }
     - { resource: ../src/Foo/Infrastructure/Resources/config/services.yaml }
     - { resource: ../src/Bar/Infrastructure/Resources/config/services.yaml }
-    - { resource: ../src/Shared/Infrastructure/Resources/config/services.yaml }
+    - { resource: ../src/Baz/Infrastructure/Resources/config/services.yaml }
 
 services:
     _defaults:

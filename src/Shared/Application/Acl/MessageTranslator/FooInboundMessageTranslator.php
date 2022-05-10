@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Application\MessageTranslator;
+namespace App\Shared\Application\Acl\MessageTranslator;
 
-use Andreo\EventSauceBundle\Attribute\AclOutboundTarget;
 use Andreo\EventSauceBundle\Attribute\AsMessageTranslator;
+use Andreo\EventSauceBundle\Attribute\ForInboundAcl;
 use EventSauce\EventSourcing\AntiCorruptionLayer\MessageTranslator;
 use EventSauce\EventSourcing\Message;
 
 #[AsMessageTranslator]
-#[AclOutboundTarget]
-final class BarOutboundMessageTranslator implements MessageTranslator
+#[ForInboundAcl]
+final class FooInboundMessageTranslator implements MessageTranslator
 {
     public function translateMessage(Message $message): Message
     {
-        return $message->withHeader('__bar_outbound_header', bin2hex(random_bytes(10)));
+        return $message->withHeader('__foo_inbound_header', bin2hex(random_bytes(10)));
     }
 }
