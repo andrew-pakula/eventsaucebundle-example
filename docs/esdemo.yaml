@@ -7,6 +7,7 @@ servers:
 tags:
   - name: foo
   - name: bar
+  - name: baz
 paths:
   /foo/create:
     post:
@@ -92,6 +93,22 @@ paths:
         '500':
           description: Error
 
+  /baz/publish:
+    post:
+      tags:
+        - baz
+      operationId: bazPublish
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishBaz'
+      responses:
+        '201':
+          description: Created
+        '500':
+          description: Error
+
 components:
   schemas:
     CreateFoo:
@@ -110,6 +127,13 @@ components:
       properties: {}
 
     ChangeBar:
+      type: object
+      properties:
+        id:
+          type: string
+          default: d1041a14-2198-408f-9885-2c68d0e71f92
+
+    PublishBaz:
       type: object
       properties:
         id:

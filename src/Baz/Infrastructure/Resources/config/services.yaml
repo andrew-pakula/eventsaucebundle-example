@@ -9,3 +9,7 @@ services:
 
     App\Baz\Infrastructure\:
         resource: '../../../Infrastructure/*'
+
+    App\Baz\Api\:
+        resource: '../../../Api/*'
+        tags: [controller.service_arguments]

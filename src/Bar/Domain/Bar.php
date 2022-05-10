@@ -10,8 +10,10 @@ use Andreo\EventSauce\Snapshotting\AggregateRootWithVersionedSnapshotting;
 use Andreo\EventSauce\Snapshotting\VersionedSnapshottingBehaviour;
 use App\Bar\Domain\Command\ChangeBar;
 use App\Bar\Domain\Command\CreateBar;
+use App\Bar\Domain\Command\CreateBarFromBaz;
 use App\Bar\Domain\Event\BarChanged;
 use App\Bar\Domain\Event\BarCreated;
+use App\Bar\Domain\Event\BarFromBazCreated;
 use App\Bar\Domain\Snapshot\BarSnapshot;
 use DateTimeImmutable;
 use EventSauce\Clock\Clock;
@@ -26,6 +28,8 @@ final class Bar implements AggregateRootWithVersionedSnapshotting
     private DateTimeImmutable $updatedAt;
 
     private string $value;
+
+    private BazValue $bazValue;
 
     public static function create(CreateBar $command, Clock $clock): self
     {
@@ -42,6 +46,25 @@ final class Bar implements AggregateRootWithVersionedSnapshotting
     public function onCreated(BarCreated $event): void
     {
         $this->updatedAt = $event->getUpdatedAt();
+    }
+
+    public static function createFromBaz(CreateBarFromBaz $command, Clock $clock): self
+    {
+        $bar = new static($command->getId());
+        $bar->recordThat(new BarFromBazCreated(
+            $command->getId(),
+            $clock->now(),
+            $command->getBazValue()
+        ));
+
+        return $bar;
+    }
+
+    #[EventSourcingHandler]
+    public function onFromBazCreated(BarFromBazCreated $event): void
+    {
+        $this->updatedAt = $event->getUpdatedAt();
+        $this->bazValue = $event->getBazValue();
     }
 
     public function change(ChangeBar $command, Clock $clock): void

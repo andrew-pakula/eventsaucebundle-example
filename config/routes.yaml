@@ -1,3 +1,7 @@
+kernel:
+    resource: ../src/Kernel.php
+    type: annotation
+
 foo_api:
     resource: ../src/Foo/Api/
     type: annotation
@@ -8,6 +12,9 @@ bar_api:
     type: annotation
     prefix: api
 
-kernel:
-    resource: ../src/Kernel.php
+baz_api:
+    resource: ../src/Baz/Api/
     type: annotation
+    prefix: api
+
+

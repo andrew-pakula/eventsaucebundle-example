@@ -18,7 +18,9 @@ final class Baz implements AggregateRoot
 
     private DateTimeImmutable $updatedAt;
 
-    private FooValue $value;
+    private FooValue $fooValue;
+
+    private string $value;
 
     public static function create(CreateBaz $command, Clock $clock): self
     {
@@ -28,6 +30,7 @@ final class Baz implements AggregateRoot
             $command->getId(),
             $clock->now(),
             $command->getValue(),
+            bin2hex(random_bytes(10)),
         ));
 
         return $cart;
@@ -37,6 +40,12 @@ final class Baz implements AggregateRoot
     public function onCreated(BazCreated $event): void
     {
         $this->updatedAt = $event->getUpdatedAt();
+        $this->fooValue = $event->getFooValue();
         $this->value = $event->getValue();
+    }
+
+    public function getValue(): string
+    {
+        return $this->value;
     }
 }

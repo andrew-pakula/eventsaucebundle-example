@@ -2,25 +2,24 @@
 
 declare(strict_types=1);
 
-namespace App\Baz\Domain\Event;
+namespace App\Bar\Domain\Event;
 
-use App\Baz\Domain\BazId;
-use App\Baz\Domain\FooValue;
+use App\Bar\Domain\BarId;
+use App\Bar\Domain\BazValue;
 use App\Shared\Application\MessageMarker\MessageInterface;
 use DateTimeImmutable;
 use EventSauce\EventSourcing\Serialization\SerializablePayload;
 
-final class BazCreated implements MessageInterface, SerializablePayload
+final class BarFromBazCreated implements MessageInterface, SerializablePayload
 {
     public function __construct(
-        private readonly BazId $id,
+        private readonly BarId $id,
         private readonly DateTimeImmutable $updatedAt,
-        private readonly FooValue $fooValue,
-        private readonly string $value
+        private readonly BazValue $bazValue
     ) {
     }
 
-    public function getId(): BazId
+    public function getId(): BarId
     {
         return $this->id;
     }
@@ -30,14 +29,9 @@ final class BazCreated implements MessageInterface, SerializablePayload
         return $this->updatedAt;
     }
 
-    public function getFooValue(): FooValue
+    public function getBazValue(): BazValue
     {
-        return $this->fooValue;
-    }
-
-    public function getValue(): string
-    {
-        return $this->value;
+        return $this->bazValue;
     }
 
     public function toPayload(): array
@@ -45,18 +39,16 @@ final class BazCreated implements MessageInterface, SerializablePayload
         return [
             'id' => $this->id->toString(),
             'updatedAt' => $this->updatedAt->format('Y-m-d H:i:s'),
-            'fooValue' => $this->fooValue->getValue(),
-            'value' => $this->value,
+            'bazValue' => $this->bazValue->getValue(),
         ];
     }
 
     public static function fromPayload(array $payload): static
     {
         return new self(
-            BazId::fromString($payload['id']),
+            BarId::fromString($payload['id']),
             DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $payload['updatedAt']),
-            new FooValue($payload['fooValue']),
-            $payload['value']
+            new BazValue($payload['bazValue'])
         );
     }
 }

@@ -45,7 +45,7 @@ final class FooApiController
     }
 
     #[Route(path: '/change', methods: Request::METHOD_PATCH)]
-    public function rename(Request $request, MessageBusInterface $commandBus): Response
+    public function change(Request $request, MessageBusInterface $commandBus): Response
     {
         try {
             $data = $request->toArray();

@@ -34,7 +34,7 @@ final class BarApiController
     }
 
     #[Route(path: '/change', methods: Request::METHOD_PATCH)]
-    public function addItem(Request $request, MessageBusInterface $commandBus): Response
+    public function change(Request $request, MessageBusInterface $commandBus): Response
     {
         try {
             $data = $request->toArray();

@@ -22,7 +22,7 @@ final class CreateBazHandler
 
     public function __invoke(CreateBaz $command): void
     {
-        $foo = Baz::create($command, $this->clock);
-        $this->repository->persist($foo);
+        $baz = Baz::create($command, $this->clock);
+        $this->repository->persist($baz);
     }
 }
