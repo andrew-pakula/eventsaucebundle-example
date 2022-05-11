@@ -41,6 +41,10 @@ migrate: ## Run doctrine migrate
 migration-generate: ## Run doctrine migrate generate
 	@$(DOCKER_COMPOSE) exec php ./bin/console d:m:g
 
+db-recreate: ## Recreate database
+	@$(DOCKER_COMPOSE) exec php ./bin/console d:d:d --force
+	@$(DOCKER_COMPOSE) exec php ./bin/console d:d:c
+
 cqrs-stop: ## Messenger and outbox stop
 	@$(DOCKER_COMPOSE) stop messenger
 	@$(DOCKER_COMPOSE) stop outbox

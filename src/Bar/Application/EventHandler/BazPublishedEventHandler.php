@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bar\Application\EventHandler;
 
-use Andreo\EventSauceBundle\Attribute\Acl;
+use Andreo\EventSauceBundle\Attribute\InboundAcl;
 use App\Bar\Domain\BarId;
 use App\Bar\Domain\BazValue;
 use App\Bar\Domain\Command\CreateBarFromBaz;
@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\Attribute\Target;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-#[Acl]
+#[InboundAcl]
 #[AsMessageHandler(
     bus: 'eventBus',
     handles: BazPublished::class,

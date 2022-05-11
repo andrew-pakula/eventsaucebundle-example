@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Foo\Application\Projection;
 
-use Andreo\EventSauceBundle\Attribute\Acl;
 use App\Foo\Application\Projection\Entity\FooProjection;
 use App\Foo\Domain\Event\FooChanged;
 use App\Foo\Domain\Event\FooCreated;
@@ -14,7 +13,6 @@ use EventSauce\EventSourcing\MessageConsumer;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Messenger\Handler\MessageSubscriberInterface;
 
-#[Acl]
 final class FooProjector implements MessageConsumer, MessageSubscriberInterface
 {
     public function __construct(private readonly FooProjectionRepository $fooProjectionRepository)

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Baz\Application\EventHandler;
 
-use Andreo\EventSauceBundle\Attribute\Acl;
+use Andreo\EventSauceBundle\Attribute\InboundAcl;
 use App\Baz\Domain\BazId;
 use App\Baz\Domain\Command\CreateBaz;
 use App\Baz\Domain\FooValue;
@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\Attribute\Target;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-#[Acl]
+#[InboundAcl]
 #[AsMessageHandler(
     bus: 'eventBus',
     handles: FooChanged::class,
