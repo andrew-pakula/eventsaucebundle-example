@@ -65,12 +65,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andrew-pakula/eventsauce-bundle.git",
-                "reference": "8b7727f8221d0a0a178c6bba70d50b0a9840a575"
+                "reference": "8d3e3c65857f357a1509e8ff675c0bd2296a0eac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-bundle/zipball/8b7727f8221d0a0a178c6bba70d50b0a9840a575",
-                "reference": "8b7727f8221d0a0a178c6bba70d50b0a9840a575",
+                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-bundle/zipball/8d3e3c65857f357a1509e8ff675c0bd2296a0eac",
+                "reference": "8d3e3c65857f357a1509e8ff675c0bd2296a0eac",
                 "shasum": ""
             },
             "require": {
@@ -131,7 +131,7 @@
                 "issues": "https://github.com/andrew-pakula/eventsauce-bundle/issues",
                 "source": "https://github.com/andrew-pakula/eventsauce-bundle/tree/main"
             },
-            "time": "2022-05-11T18:46:52+00:00"
+            "time": "2022-05-11T19:01:18+00:00"
         },
         {
             "name": "andreo/eventsauce-messenger",
