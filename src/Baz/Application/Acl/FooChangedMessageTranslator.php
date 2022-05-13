@@ -12,8 +12,8 @@ use App\Foo\Domain\Event\FooChangedV2 as FooChanged;
 use EventSauce\EventSourcing\AntiCorruptionLayer\MessageTranslator;
 use EventSauce\EventSourcing\Message;
 
-#[ForInboundAcl(target: FooChangedEventHandler::class)]
 #[AsMessageTranslator]
+#[ForInboundAcl(FooChangedEventHandler::class)]
 final class FooChangedMessageTranslator implements MessageTranslator
 {
     public function translateMessage(Message $message): Message
@@ -23,6 +23,7 @@ final class FooChangedMessageTranslator implements MessageTranslator
 
         return new Message(
             new FooValue($event->getValue()),
+            $message->headers()
         );
     }
 }

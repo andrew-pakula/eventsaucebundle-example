@@ -8,7 +8,7 @@ use Andreo\EventSauceBundle\Attribute\AsMessageTranslator;
 use EventSauce\EventSourcing\AntiCorruptionLayer\MessageTranslator;
 use EventSauce\EventSourcing\Message;
 
-#[AsMessageTranslator]
+#[AsMessageTranslator(priority: 5)]
 final class BazMessageTranslator implements MessageTranslator
 {
     public function translateMessage(Message $message): Message

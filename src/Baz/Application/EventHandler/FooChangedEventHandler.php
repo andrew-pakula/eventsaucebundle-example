@@ -23,7 +23,7 @@ use Symfony\Component\Messenger\MessageBusInterface;
 )]
 final class FooChangedEventHandler implements MessageConsumer
 {
-    public function __construct(#[Target('commandBus')] private MessageBusInterface $commandBus)
+    public function __construct(#[Target('commandBus')] private readonly MessageBusInterface $commandBus)
     {
     }
 

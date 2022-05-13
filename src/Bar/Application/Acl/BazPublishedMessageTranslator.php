@@ -12,8 +12,8 @@ use App\Baz\Domain\Event\BazPublished;
 use EventSauce\EventSourcing\AntiCorruptionLayer\MessageTranslator;
 use EventSauce\EventSourcing\Message;
 
-#[ForInboundAcl(target: BazPublishedEventHandler::class)]
 #[AsMessageTranslator]
+#[ForInboundAcl(BazPublishedEventHandler::class)]
 final class BazPublishedMessageTranslator implements MessageTranslator
 {
     public function translateMessage(Message $message): Message
@@ -23,6 +23,7 @@ final class BazPublishedMessageTranslator implements MessageTranslator
 
         return new Message(
             new BazValue($event->getValue()),
+            $message->headers()
         );
     }
 }

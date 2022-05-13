@@ -9,7 +9,7 @@ use Andreo\EventSauceBundle\Attribute\ForInboundAcl;
 use EventSauce\EventSourcing\AntiCorruptionLayer\MessageTranslator;
 use EventSauce\EventSourcing\Message;
 
-#[AsMessageTranslator]
+#[AsMessageTranslator(priority: 5)]
 #[ForInboundAcl]
 final class BarInboundMessageTranslator implements MessageTranslator
 {
