@@ -46,7 +46,7 @@ final class Foo implements AggregateRoot
             $command->getId(),
             $clock->now(),
             bin2hex(random_bytes(10)),
-            bin2hex(random_bytes(20))
+//            bin2hex(random_bytes(20))
         ));
     }
 

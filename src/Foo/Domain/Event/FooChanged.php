@@ -14,7 +14,7 @@ final class FooChanged implements MessageInterface, SerializablePayload
     public function __construct(
         private readonly FooId $id,
         private readonly DateTimeImmutable $updatedAt,
-        private string $value
+        private readonly string $value
     ) {
     }
 
