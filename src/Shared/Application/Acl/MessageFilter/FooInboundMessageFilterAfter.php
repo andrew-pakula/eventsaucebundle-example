@@ -14,8 +14,8 @@ use EventSauce\EventSourcing\Message;
 
 #[ForInboundAcl]
 #[ForOutboundAcl]
-#[AsMessageFilter(FilterPosition::BEFORE)]
-final class FooInboundMessageFilterBefore implements MessageFilter
+#[AsMessageFilter(FilterPosition::AFTER)]
+final class FooInboundMessageFilterAfter implements MessageFilter
 {
     public function allows(Message $message): bool
     {
