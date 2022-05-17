@@ -12,7 +12,8 @@ final class BazPublished implements MessageInterface, SerializablePayload
 {
     public function __construct(
         private readonly BazId $id,
-        private readonly string $value
+        private readonly string $value,
+        private readonly bool $public
     ) {
     }
 
@@ -26,11 +27,17 @@ final class BazPublished implements MessageInterface, SerializablePayload
         return $this->value;
     }
 
+    public function isPublic(): bool
+    {
+        return $this->public;
+    }
+
     public function toPayload(): array
     {
         return [
             'id' => $this->id->toString(),
             'value' => $this->value,
+            'public' => $this->public,
         ];
     }
 
@@ -38,7 +45,8 @@ final class BazPublished implements MessageInterface, SerializablePayload
     {
         return new self(
             BazId::fromString($payload['id']),
-            $payload['value']
+            $payload['value'],
+            $payload['public']
         );
     }
 }

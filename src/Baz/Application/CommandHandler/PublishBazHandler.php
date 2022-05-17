@@ -30,6 +30,7 @@ final class PublishBazHandler
             new BazPublished(
                 $baz->aggregateRootId(),
                 $baz->getValue(),
+                1 === random_int(0, 1)
             ),
         );
     }
