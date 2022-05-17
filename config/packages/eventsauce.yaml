@@ -3,9 +3,11 @@ andreo_event_sauce:
         timezone: Europe/Warsaw
     messenger_message_dispatcher:
         chain:
-            defaultBus:
+            eventDispatcher:
                 bus: eventBus
                 acl: true
+            notificationDispatcher:
+                bus: notificationBus
     event_dispatcher:
         outbox: true
     acl: true
