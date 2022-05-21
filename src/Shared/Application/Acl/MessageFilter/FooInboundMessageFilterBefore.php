@@ -6,14 +6,12 @@ namespace App\Shared\Application\Acl\MessageFilter;
 
 use Andreo\EventSauceBundle\Attribute\AsMessageFilter;
 use Andreo\EventSauceBundle\Attribute\ForInboundAcl;
-use Andreo\EventSauceBundle\Attribute\ForOutboundAcl;
 use Andreo\EventSauceBundle\Enum\FilterPosition;
 use App\Shared\Application\MessageMarker\MessageInterface;
 use EventSauce\EventSourcing\AntiCorruptionLayer\MessageFilter;
 use EventSauce\EventSourcing\Message;
 
 #[ForInboundAcl]
-#[ForOutboundAcl]
 #[AsMessageFilter(FilterPosition::BEFORE)]
 final class FooInboundMessageFilterBefore implements MessageFilter
 {

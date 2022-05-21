@@ -18,8 +18,6 @@ andreo_event_sauce:
         store_strategy:
             every_n_event:
                 number: 10
-        repository:
-            doctrine: true
     upcaster:
         argument: message
     migration_generator: true

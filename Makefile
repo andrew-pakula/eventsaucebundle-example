@@ -46,6 +46,9 @@ db-recreate: ## Recreate database
 	@$(DOCKER_COMPOSE) exec php ./bin/console d:d:c
 	@$(DOCKER_COMPOSE) exec php ./bin/console d:m:m --no-interaction
 
+cc: ## Clear cache
+	@$(DOCKER_COMPOSE) exec php ./bin/console c:c
+
 cqrs-stop: ## Messenger and outbox stop
 	@$(DOCKER_COMPOSE) stop messenger
 	@$(DOCKER_COMPOSE) stop outbox
