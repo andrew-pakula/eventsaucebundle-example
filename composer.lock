@@ -65,12 +65,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andrew-pakula/eventsauce-bundle.git",
-                "reference": "4b9c0afb5a83e98da74b437dd3ae77d49ad2e998"
+                "reference": "43e0affec50ca7c084f97c20ca0e368a737cb798"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-bundle/zipball/4b9c0afb5a83e98da74b437dd3ae77d49ad2e998",
-                "reference": "4b9c0afb5a83e98da74b437dd3ae77d49ad2e998",
+                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-bundle/zipball/43e0affec50ca7c084f97c20ca0e368a737cb798",
+                "reference": "43e0affec50ca7c084f97c20ca0e368a737cb798",
                 "shasum": ""
             },
             "require": {
@@ -97,7 +97,7 @@
             "suggest": {
                 "andreo/eventsauce-aggregate": "Extended aggregate components of the EventSauce.",
                 "andreo/eventsauce-messenger": "Integration symfony messenger.",
-                "andreo/eventsauce-migration-generator": "This component generates doctrine migrations per aggregate.",
+                "andreo/eventsauce-migration-generator": "Generates doctrine migrations per aggregate.",
                 "andreo/eventsauce-outbox": "Extended message outbox components.",
                 "andreo/eventsauce-snapshotting": "Extended snapshot components.",
                 "andreo/eventsauce-upcasting": "Extended upcasting components."
@@ -131,7 +131,7 @@
                 "issues": "https://github.com/andrew-pakula/eventsauce-bundle/issues",
                 "source": "https://github.com/andrew-pakula/eventsauce-bundle/tree/main"
             },
-            "time": "2022-05-21T18:04:37+00:00"
+            "time": "2022-05-22T18:52:41+00:00"
         },
         {
             "name": "andreo/eventsauce-messenger",
@@ -139,12 +139,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andrew-pakula/eventsauce-messenger.git",
-                "reference": "a014bb1908589c1832b94e442f2ee8c77a8a2a5a"
+                "reference": "1caea11f663319bd7c89f2fbc94124e222b9670f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-messenger/zipball/a014bb1908589c1832b94e442f2ee8c77a8a2a5a",
-                "reference": "a014bb1908589c1832b94e442f2ee8c77a8a2a5a",
+                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-messenger/zipball/1caea11f663319bd7c89f2fbc94124e222b9670f",
+                "reference": "1caea11f663319bd7c89f2fbc94124e222b9670f",
                 "shasum": ""
             },
             "require": {
@@ -186,9 +186,9 @@
             ],
             "support": {
                 "issues": "https://github.com/andrew-pakula/eventsauce-messenger/issues",
-                "source": "https://github.com/andrew-pakula/eventsauce-messenger/tree/main"
+                "source": "https://github.com/andrew-pakula/eventsauce-messenger/tree/2.0.0"
             },
-            "time": "2022-04-27T19:51:53+00:00"
+            "time": "2022-05-22T17:14:35+00:00"
         },
         {
             "name": "andreo/eventsauce-migration-generator",
@@ -196,12 +196,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andrew-pakula/eventsauce-migration-generator.git",
-                "reference": "be03bb9910cf0c9b8168b5e9c73641868096b9b8"
+                "reference": "6f412cca342bf9dba4a33850c23b6760dce5864c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-migration-generator/zipball/be03bb9910cf0c9b8168b5e9c73641868096b9b8",
-                "reference": "be03bb9910cf0c9b8168b5e9c73641868096b9b8",
+                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-migration-generator/zipball/6f412cca342bf9dba4a33850c23b6760dce5864c",
+                "reference": "6f412cca342bf9dba4a33850c23b6760dce5864c",
                 "shasum": ""
             },
             "require": {
@@ -245,9 +245,9 @@
             ],
             "support": {
                 "issues": "https://github.com/andrew-pakula/eventsauce-migration-generator/issues",
-                "source": "https://github.com/andrew-pakula/eventsauce-migration-generator/tree/main"
+                "source": "https://github.com/andrew-pakula/eventsauce-migration-generator/tree/2.0.0"
             },
-            "time": "2022-04-25T19:12:14+00:00"
+            "time": "2022-05-22T18:44:10+00:00"
         },
         {
             "name": "andreo/eventsauce-outbox",
@@ -255,12 +255,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andrew-pakula/eventsauce-outbox.git",
-                "reference": "79523588425fcbc441fbcbefb35891ef3c7cf799"
+                "reference": "5b61b13b2fa565dcadac8d9953c3cd9b7d126516"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-outbox/zipball/79523588425fcbc441fbcbefb35891ef3c7cf799",
-                "reference": "79523588425fcbc441fbcbefb35891ef3c7cf799",
+                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-outbox/zipball/5b61b13b2fa565dcadac8d9953c3cd9b7d126516",
+                "reference": "5b61b13b2fa565dcadac8d9953c3cd9b7d126516",
                 "shasum": ""
             },
             "require": {
@@ -303,9 +303,9 @@
             ],
             "support": {
                 "issues": "https://github.com/andrew-pakula/eventsauce-outbox/issues",
-                "source": "https://github.com/andrew-pakula/eventsauce-outbox/tree/main"
+                "source": "https://github.com/andrew-pakula/eventsauce-outbox/tree/2.0.0"
             },
-            "time": "2022-05-21T13:02:41+00:00"
+            "time": "2022-05-22T17:26:29+00:00"
         },
         {
             "name": "andreo/eventsauce-snapshotting",
@@ -313,12 +313,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andrew-pakula/eventsauce-snapshotting.git",
-                "reference": "5cd5d2ed0f98bf51aca0162b04ada66699246517"
+                "reference": "0115372351a080f4f91e60c99fc8e9c4d5cdbbce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-snapshotting/zipball/5cd5d2ed0f98bf51aca0162b04ada66699246517",
-                "reference": "5cd5d2ed0f98bf51aca0162b04ada66699246517",
+                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-snapshotting/zipball/0115372351a080f4f91e60c99fc8e9c4d5cdbbce",
+                "reference": "0115372351a080f4f91e60c99fc8e9c4d5cdbbce",
                 "shasum": ""
             },
             "require": {
@@ -363,7 +363,7 @@
                 "issues": "https://github.com/andrew-pakula/eventsauce-snapshotting/issues",
                 "source": "https://github.com/andrew-pakula/eventsauce-snapshotting/tree/main"
             },
-            "time": "2022-04-24T17:13:34+00:00"
+            "time": "2022-05-22T17:42:23+00:00"
         },
         {
             "name": "andreo/eventsauce-upcasting",
@@ -371,12 +371,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andrew-pakula/eventsauce-upcasting.git",
-                "reference": "9e692f10df9aa2a246c8dcc9ab55c8f73deff62b"
+                "reference": "9620d1ad39173a5803bbe7a1a9520c97ef409f00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-upcasting/zipball/9e692f10df9aa2a246c8dcc9ab55c8f73deff62b",
-                "reference": "9e692f10df9aa2a246c8dcc9ab55c8f73deff62b",
+                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-upcasting/zipball/9620d1ad39173a5803bbe7a1a9520c97ef409f00",
+                "reference": "9620d1ad39173a5803bbe7a1a9520c97ef409f00",
                 "shasum": ""
             },
             "require": {
@@ -414,9 +414,9 @@
             ],
             "support": {
                 "issues": "https://github.com/andrew-pakula/eventsauce-upcasting/issues",
-                "source": "https://github.com/andrew-pakula/eventsauce-upcasting/tree/main"
+                "source": "https://github.com/andrew-pakula/eventsauce-upcasting/tree/2.0.0"
             },
-            "time": "2022-04-24T17:17:33+00:00"
+            "time": "2022-05-22T17:46:18+00:00"
         },
         {
             "name": "brick/math",

@@ -49,7 +49,7 @@ db-recreate: ## Recreate database
 cc: ## Clear cache
 	@$(DOCKER_COMPOSE) exec php ./bin/console c:c
 
-clear-log: ## Clear cache
+clear-log: ## Clear logs
 	@$(DOCKER_COMPOSE) exec php rm ./var/log/*
 
 cqrs-stop: ## Messenger and outbox stop
