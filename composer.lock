@@ -65,12 +65,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andrew-pakula/eventsauce-bundle.git",
-                "reference": "43e0affec50ca7c084f97c20ca0e368a737cb798"
+                "reference": "055b986b89543d5900b0cef6d8365a97573c7482"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-bundle/zipball/43e0affec50ca7c084f97c20ca0e368a737cb798",
-                "reference": "43e0affec50ca7c084f97c20ca0e368a737cb798",
+                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-bundle/zipball/055b986b89543d5900b0cef6d8365a97573c7482",
+                "reference": "055b986b89543d5900b0cef6d8365a97573c7482",
                 "shasum": ""
             },
             "require": {
@@ -129,9 +129,9 @@
             ],
             "support": {
                 "issues": "https://github.com/andrew-pakula/eventsauce-bundle/issues",
-                "source": "https://github.com/andrew-pakula/eventsauce-bundle/tree/main"
+                "source": "https://github.com/andrew-pakula/eventsauce-bundle/tree/2.0.0"
             },
-            "time": "2022-05-22T18:52:41+00:00"
+            "time": "2022-05-25T17:53:56+00:00"
         },
         {
             "name": "andreo/eventsauce-messenger",
@@ -313,12 +313,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andrew-pakula/eventsauce-snapshotting.git",
-                "reference": "0115372351a080f4f91e60c99fc8e9c4d5cdbbce"
+                "reference": "294110a4f18bb94d2d320201681fa11ece2b3981"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-snapshotting/zipball/0115372351a080f4f91e60c99fc8e9c4d5cdbbce",
-                "reference": "0115372351a080f4f91e60c99fc8e9c4d5cdbbce",
+                "url": "https://api.github.com/repos/andrew-pakula/eventsauce-snapshotting/zipball/294110a4f18bb94d2d320201681fa11ece2b3981",
+                "reference": "294110a4f18bb94d2d320201681fa11ece2b3981",
                 "shasum": ""
             },
             "require": {
@@ -363,7 +363,7 @@
                 "issues": "https://github.com/andrew-pakula/eventsauce-snapshotting/issues",
                 "source": "https://github.com/andrew-pakula/eventsauce-snapshotting/tree/main"
             },
-            "time": "2022-05-22T17:42:23+00:00"
+            "time": "2022-05-24T19:48:03+00:00"
         },
         {
             "name": "andreo/eventsauce-upcasting",

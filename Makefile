@@ -32,6 +32,14 @@ cli: ## Run php cli
 test: ## Run phpunit
 	@$(DOCKER_COMPOSE) exec php ./bin/phpunit
 
+setup: ## Setup project
+	@$(DOCKER_COMPOSE) exec php composer install
+	@$(DOCKER_COMPOSE) exec php ./bin/console d:d:d --force
+	@$(DOCKER_COMPOSE) exec php ./bin/console d:d:c
+	@$(DOCKER_COMPOSE) exec php ./bin/console d:m:m --no-interaction
+	@$(DOCKER_COMPOSE) restart messenger
+	@$(DOCKER_COMPOSE) restart outbox
+
 install: ## Run composer install
 	@$(DOCKER_COMPOSE) exec php composer install
 
