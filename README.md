@@ -17,6 +17,7 @@ Run inside project
 ```bash
 make up # builds dockers
 make setup # installs dependencies, runs migrations
+make logs # see logs or not
 ```
 Open
 
