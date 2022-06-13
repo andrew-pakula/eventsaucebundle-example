@@ -33,7 +33,7 @@ services:
     outbox:
         build: *php-build
         container_name: eventsauce_outbox
-        command: ["./bin/console", "andreo:event-sauce:outbox-process-messages", "--sleep=2"]
+        command: ["./bin/console", "andreo:eventsauce:message-outbox:consume", "--sleep=2"]
         restart: unless-stopped
         volumes: *volumes
         depends_on:

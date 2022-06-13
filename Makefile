@@ -60,19 +60,19 @@ cc: ## Clear cache
 clear-log: ## Clear logs
 	@$(DOCKER_COMPOSE) exec php rm ./var/log/*
 
-cqrs-stop: ## Messenger and outbox stop
+consume-stop: ## Messenger and outbox stop
 	@$(DOCKER_COMPOSE) stop messenger
 	@$(DOCKER_COMPOSE) stop outbox
 
-cqrs-restart: ## Messenger and outbox restart
+consume-restart: ## Messenger and outbox restart
 	@$(DOCKER_COMPOSE) restart messenger
 	@$(DOCKER_COMPOSE) restart outbox
 
-messenger-consume: ## Messenger consume
+consume-messenger: ## Messenger messages consume
 	@$(DOCKER_COMPOSE) exec php ./bin/console messenger:consume high_priority normal_priority
 
-outbox-consume: ## Outbox consume
-	@$(DOCKER_COMPOSE) exec php ./bin/console andreo:event-sauce:outbox-process-messages --sleep=2
+consume-outbox: ## Outbox messages consume
+	@$(DOCKER_COMPOSE) exec php ./bin/console andreo:eventsauce:message-outbox:consume --sleep=2
 
 fix-cs: ## Fix cs
 	@$(DOCKER_COMPOSE) exec php tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --allow-risky=yes
